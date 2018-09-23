@@ -1,0 +1,338 @@
+a{text-decoration: none !important;}
+i{font-style:normal;}
+.brand{height: 34px;}
+.app{position:relative;width:100%;}
+.app nav{padding-left: 60px;width: 100%;height: 80px;line-height: 80px;position:absolute;left:0;top:0;}
+.header ul{font-size: 16px;position:absolute;top:15px;right:100px;}
+.app ul li a{color:#fff;}
+.title{width:1045px;position: absolute;top:235px;left:430px;}
+.plan{width: 100%;height: 460px;position:relative;}
+.plan-content{width: 1000px;height: 460px;padding-top: 100px;margin:0 auto;}
+h2{text-align: center;font-size: 28px;color:#4d4d4d;line-height: 30px;font-weight: 400;}
+.plan-list{display:flex;justify-content:space-between;margin-top: 20px;padding: 0 18px;}
+.plan-list li{display:flex;align-items: flex-end;}
+.arrow{width: 26px;}
+.list-left{position:relative;display:flex;flex-direction:column;justify-content:flex-end;height: 220px;text-align: center;}
+.list-left p{width: 192px;min-height:80px;max-width:220px;position:absolute;top:30px;left:-40px;font-size: 12px;color: grey;border-radius:2px;background: #fff;box-shadow: 0 6px 22px 0 rgba(0,0,0,.12);opacity:0;}
+.list-right{display:flex;flex-direction: column;justify-content:flex-end;padding-bottom: 35px;}
+.todo{
+  height: 1260px;
+  width: 100%;
+  padding-top: 80px;
+  background: #f8f8fa;
+}
+.todo-list{
+  width: 1050px;
+  margin:0 auto;
+  padding-top: 60px;
+  display:flex;
+  flex-wrap : wrap;
+  font-weight: 400;
+}
+.todo-list img{
+  height: 180px;
+  display : block;
+  margin:0 auto;
+}
+.todo-list span{
+  font-size:18px;
+  color:#333;
+  line-height: 30px;
+  font-weight: 700;
+  white-space:nowrap;
+
+}
+.todo-item{
+  width: 310px;
+  height: 460px;
+  padding:40px 0;
+  margin: 0  60px 60px 0;
+  background: #fff;
+  border:1px solid #ebedf0;
+}
+.todo-item.num3,.todo-item.num6{
+  margin-right:0;
+}
+.todo-item div{
+  margin: 20px 0 0 0;
+  padding: 0 29px;
+}
+.todo-item p{
+  margin-top: 14px;
+  padding: 0 29px;
+}
+.message{
+  margin-top: 8px;
+  color:gray;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0 29px;
+}
+.resource{
+  width: 1000px;
+  /*height: 395px;*/
+  padding-top: 80px;
+  margin:0 auto;
+}
+.resource div{
+  width: 100%;
+  padding:0 34px;
+  margin-top: 52px;
+  text-align: center;
+}
+.resource img{
+  width: 100%;
+  /*filter: blur(2px);     图片模糊效果，类似于毛玻璃*/
+}
+.money{
+  margin-top: 75px;
+  width: 100%;
+  position:relative;
+}
+.money .money-bg{
+  width:100%;
+  /*height:100%;*/
+}
+.wrapper{
+  width: 1000px;
+  position:absolute;
+  top:0;
+  left: 0;
+  bottom:0;
+  right:0;
+  margin: auto;     /*以上5句代码实现绝对定位元素的居中对齐*/
+  display:flex;
+  flex-direction:column;
+  justify-content:space-evenly;
+}
+.wrapper div{
+  display:flex;
+  justify-content:space-between;
+  background: rgba(0,0,0,0.7);
+  font-size: 16px;
+  text-indent: 32px;
+  line-height: 2.1;
+  color:#fff;
+  padding:40px;
+}
+.wrapper div p{
+  width: 430px;
+}
+.wrapper div img{
+  width: 87px;
+  height: 14px;
+}
+h1{
+  font-size: 60px;
+  line-height: 84px;
+  font-weight: lighter;
+  text-align: center;
+  color:#fff;
+}
+.awards{
+  height: 460px;
+  background: #f8f8fa;
+  min-width:1050px;
+  padding-top: 80px;
+}
+.awards div{
+  width: 1000px;
+  margin:0 auto;
+  text-align: center;
+}
+.awards img{
+  width: 210px;
+}
+.awards ul{
+  display:flex;
+  justify-content:space-between;
+  margin-top: 30px;
+}
+.awards ul p{
+  color:grey;
+  font-size: 16px;
+  line-height: 20px;
+  white-space:nowrap;
+}
+.awards ul span{
+  font-size: 16px;
+  font-weight: 400;
+  white-space: nowrap;
+  line-height: 20px;
+  color:#333;
+  margin-top: 10px;
+}
+.tel{
+  width: 1000px;
+  margin:0 auto;
+}
+.tel-wrapper{
+  margin-top: 100px;
+  padding: 0 0 50px 34px;
+}
+.tel h2{
+  text-align:left;
+}
+.tel h2:last-of-type{
+  margin-top: 100px;
+}
+.tel .service,.tel .contact{
+  margin-top: 30px;
+  font-size: 20px;
+  color: #666;
+}
+.tel .service p:first-of-type{
+  margin-bottom: 15px;
+}
+.tel i{
+  display: inline-block;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 6px;
+}
+
+.tel .address{
+  position: absolute;
+  right: 0;
+}
+.tel .subscribe{
+  position: absolute;
+  right: 161px;
+}
+.subscribe img:last-of-type{
+  cursor:pointer;
+}
+.contact p,.contact .email{
+  position: relative;
+}
+#contact-bottom{
+  width: 425px;
+  display:flex;
+  justify-content:space-between;
+  margin-left:60px ;
+}
+.contact em{
+  font-style: normal;
+  position:absolute;
+  left:358px;
+}
+.contact .qr-code{
+  display:none;
+  position: absolute;
+  top: 26px;
+  right: -14px;
+  z-index: 5;
+  font-size: 16px;
+  text-align: center;
+  line-height: 22px;
+  color: #4d4d4d;
+}
+footer{
+  position:relative;
+  width:100%;
+  height: 227px;
+  border-top: 1px solid #e6e7ea;
+}
+footer .footer-inner{
+  margin: 0 auto;
+  width: 1000px;
+  height: 100%;
+  padding:28px 4px 155px ;
+}
+.footer-inner{
+  font-size: 12px;
+  line-height: 20px;
+  color:#8a8a8a;
+}
+.footer-top{
+  position:relative;
+}
+.footer-top p:last-of-type{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.to-top{
+  cursor: pointer;
+  position: absolute;
+  top: -20px;
+  right: 390px;
+}
+.media{
+  width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+.media .media-inner{
+  margin-top: 80px;
+}
+.media-summary{
+  font-size: 20px;
+  line-height: 1.8;
+  color: #5a5a5a;
+  margin: 70px  80px;
+  position: relative;
+  height: 72px;
+
+}
+.media-summary a{
+  display: block;
+  width: 100%;
+  color: #5a5a5a;
+  height: 72px;
+  position: absolute;
+  top: 0;
+  right: -50px;
+  opacity: 0;
+}
+.media-summary a.current{
+  animation: slideTo 1s ease  0s forwards;
+}
+@keyframes slideTo{
+  from{
+    right: -50px;
+    opacity: 0;
+  }
+  to{
+    right: 0;
+    opacity: 1;
+  }
+}
+.quot-left{
+  width: 16px;
+  position: absolute;
+  top: 5px;
+  left: -30px;
+}
+.quot-right{
+  width: 16px;
+  position: absolute;
+  bottom: 0;
+  right: -25px;
+}
+.media-list{
+  margin-top: 50px;
+}
+.media-list div{
+  padding: 0 55px;
+  display: flex;
+  justify-content: space-between;
+}
+.media-list img{
+  width: 100%;
+  opacity: 0.3;
+}
+.media-list img.current{
+  animation: highlight 0.5s ease 0s forwards;
+}
+@keyframes highlight {
+  from{
+    opacity: 0.3;
+  }
+  to{
+    opacity: 1;
+  }
+}
+.media-list div:last-of-type{
+  margin-top: 50px;
+}

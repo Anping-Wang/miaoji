@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--<link rel="stylesheet" type="text/css" href="../public/css/style.css">-->
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Document</title>
+
+    <style>
+        body::-webkit-scrollbar{width: 6px}
+        body::-webkit-scrollbar-thumb{
+            background: #ccc;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+        body::-webkit-scrollbar-thumb:hover{
+            background: #999;}
+        *{margin:0;padding: 0;}
+        a,ul,ol{text-decoration: none !important;list-style: none;}
+        i{font-style: normal;}
+        .brand{height: 34px;}
+        .app{position: relative;width: 100%;}
+        .header nav{padding-left: 60px;width: 100%;height: 80px;line-height: 80px;position: absolute;left: 0;top: 0;}
+        .header nav.fixed{position: fixed;z-index: 10;background-color: rgba(2, 22, 61, 0.78);animation: slideDown 0.5s ease 0s none;}
+        @keyframes slideDown { from{top: -80px;opacity: 0;} to{top: 0;opacity: 1;} }
+        .header ul{font-size: 16px;position: absolute;top: 0;right: 20px;display: flex;}
+        .header ul li{margin-right: 40px;}
+        .header ul li a:hover{color: #fff;}
+        .app ul li a{color: #eee;}
+        .title{width: 1045px;position: absolute;top: 235px;left: 430px;}
+        .plan{width: 100%;height: 460px;position: relative;}
+        .plan-content{width: 1000px;height: 460px;padding-top: 100px;margin: 0 auto;}
+        h2{text-align: center;font-size: 28px;color: #4d4d4d;line-height: 30px;font-weight: 400;}
+        .plan-list{display: flex;justify-content: space-between;margin-top: 20px;padding: 0 18px;}
+        .plan-list li{display: flex;align-items: flex-end;}
+        .plan-list li p::after{
+            content: '';
+            position: absolute;
+            left: 47%;
+            bottom: -6px;
+            border-top: 6px solid #fff;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+        }
+        .arrow{width: 26px;}
+        .list-left{position: relative;display: flex;flex-direction: column;justify-content: flex-end;height: 220px;text-align: center;}
+        .list-left p{width: 192px;min-height: 80px;max-width: 220px;position: absolute;top: 30px;left: -40px;font-size: 12px;color: grey;border-radius: 2px;background: #fff;box-shadow: 0 6px 22px 0 rgba(0,0,0,.12);opacity: 0;transform: translateY(-20%)}
+        .list-left span.current{font-weight: bold;}
+        .list-left p.current{animation: slideUp 0.5s ease 0s forwards}
+        @keyframes slideUp {
+            from{opacity: 0;transform: translateY(20%)}
+            to{opacity: 1;transform: translateY(0)}
+        }
+        .list-right{display: flex;flex-direction: column;justify-content: flex-end;padding-bottom: 35px;}
+        .todo{
+            height: 1260px;
+            width: 100%;
+            padding-top: 80px;
+            background: #f8f8fa;
+        }
+        .todo-list{
+            width: 1050px;
+            margin: 0 auto;
+            padding-top: 60px;
+            display: flex;
+            flex-wrap : wrap;
+            font-weight: 400;
+        }
+        .todo-list img{
+            height: 180px;
+            display : block;
+            margin: 0 auto;
+        }
+        .todo-list span{
+            font-size: 18px;
+            color: #333;
+            line-height: 30px;
+            font-weight: 700;
+            white-space: nowrap;
+
+        }
+        .todo-item{
+            width: 310px;
+            height: 460px;
+            padding: 40px 0;
+            margin: 0  60px 60px 0;
+            background: #fff;
+            border: 1px solid #ebedf0;
+        }
+        .todo-item.num3,.todo-item.num6{
+            margin-right: 0;
+        }
+        .todo-item div{
+            margin: 20px 0 0 0;
+            padding: 0 29px;
+        }
+        .todo-item p{
+            margin-top: 14px;
+            padding: 0 29px;
+        }
+        .message{
+            margin-top: 8px;
+            color: gray;
+            font-size: 14px;
+            line-height: 24px;
+            padding: 0 29px;
+        }
+        .resource{
+            width: 1000px;
+            /*height: 395px;*/
+            padding-top: 80px;
+            margin: 0 auto;
+        }
+        .resource div{
+            width: 100%;
+            padding: 0 34px;
+            margin-top: 52px;
+            text-align: center;
+        }
+        .resource img{
+            width: 100%;
+            /*filter: blur(2px);     图片模糊效果，类似于毛玻璃*/
+        }
+        .money{
+            margin-top: 75px;
+            width: 100%;
+            position: relative;
+        }
+        .money .money-bg{
+            width: 100%;
+            /*height:100%;*/
+        }
+        .wrapper{
+            width: 1000px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;     /*以上5句代码实现绝对定位元素的居中对齐*/
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        .wrapper div{
+            display: flex;
+            justify-content: space-between;
+            background: rgba(0,0,0,0.7);
+            font-size: 16px;
+            text-indent: 32px;
+            line-height: 2.1;
+            color: #fff;
+            padding: 40px;
+        }
+        .wrapper div p{
+            width: 430px;
+        }
+        .wrapper div img{
+            width: 87px;
+            height: 14px;
+        }
+        h1{
+            font-size: 60px;
+            line-height: 84px;
+            font-weight: lighter;
+            text-align: center;
+            color: #fff;
+        }
+        .awards{
+            height: 460px;
+            background: #f8f8fa;
+            min-width: 1050px;
+            padding-top: 80px;
+        }
+        .awards div{
+            width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .awards img{
+            width: 210px;
+        }
+        .awards ul{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .awards ul p{
+            color: grey;
+            font-size: 16px;
+            line-height: 20px;
+            white-space: nowrap;
+        }
+        .awards ul span{
+            font-size: 16px;
+            font-weight: 400;
+            white-space: nowrap;
+            line-height: 20px;
+            color: #333;
+            margin-top: 10px;
+        }
+        .tel{
+            width: 1000px;
+            margin: 0 auto;
+        }
+        .tel-wrapper{
+            margin-top: 100px;
+            padding: 0 0 50px 34px;
+        }
+        .tel h2{
+            text-align: left;
+        }
+        .tel h2:last-of-type{
+            margin-top: 100px;
+        }
+        .tel .service,.tel .contact{
+            margin-top: 30px;
+            font-size: 20px;
+            color: #666;
+        }
+        .tel .service p:first-of-type{
+            margin-bottom: 15px;
+        }
+        .tel i{
+            display: inline-block;
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 6px;
+        }
+
+        .tel .address{
+            position: absolute;
+            right: 0;
+        }
+        .tel .subscribe{
+            position: absolute;
+            right: 161px;
+        }
+        .subscribe img:last-of-type{
+            cursor: pointer;
+        }
+        .contact p,.contact .email{
+            position: relative;
+        }
+        #contact-bottom{
+            width: 425px;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 60px ;
+        }
+        .contact em{
+            font-style: normal;
+            position: absolute;
+            left: 358px;
+        }
+        .contact .qr-code{
+            display: none;
+            position: absolute;
+            top: 26px;
+            right: -14px;
+            z-index: 5;
+            font-size: 16px;
+            text-align: center;
+            line-height: 22px;
+            color: #4d4d4d;
+        }
+        footer{
+            position: relative;
+            width: 100%;
+            height: 227px;
+            border-top: 1px solid #e6e7ea;
+        }
+        footer .footer-inner{
+            margin: 0 auto;
+            width: 1000px;
+            height: 100%;
+            padding: 28px 4px 155px ;
+        }
+        .footer-inner{
+            font-size: 12px;
+            line-height: 20px;
+            color: #8a8a8a;
+        }
+        .footer-top{
+            position: relative;
+        }
+        .footer-top p:last-of-type{
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .to-top{
+            cursor: pointer;
+            position: absolute;
+            top: -20px;
+            right: 390px;
+        }
+        .media{
+            width: 1000px;
+            margin: 0 auto;
+            padding-bottom: 80px;
+        }
+        .media .media-inner{
+            margin-top: 80px;
+        }
+        .media-summary{
+            font-size: 20px;
+            line-height: 1.8;
+            color: #5a5a5a;
+            margin: 70px  80px;
+            position: relative;
+            height: 72px;
+
+        }
+        .media-summary a{
+            display: block;
+            width: 100%;
+            color: #5a5a5a;
+            height: 72px;
+            position: absolute;
+            top: 0;
+            right: -50px;
+            opacity: 0;
+        }
+        .media-summary a.current{
+            animation: slideTo 1s ease  0s forwards;
+        }
+        @keyframes slideTo{
+            from{
+                right: -50px;
+                opacity: 0;
+            }
+            to{
+                right: 0;
+                opacity: 1;
+            }
+        }
+        .quot-left{
+            width: 16px;
+            position: absolute;
+            top: 5px;
+            left: -30px;
+        }
+        .quot-right{
+            width: 16px;
+            position: absolute;
+            bottom: 0;
+            right: -25px;
+        }
+        .media-list{
+            margin-top: 50px;
+        }
+        .media-list div{
+            padding: 0 55px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .media-list img{
+            width: 100%;
+            opacity: 0.3;
+        }
+        .media-list img.current{
+            animation: highlight 0.5s ease 0s forwards;
+        }
+        @keyframes highlight {
+            from{
+                opacity: 0.3;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+        .media-list div:last-of-type{
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app" id="page-top">
+        <!--导航栏-->
+        <div class="header">
+            <nav>
+                <img src="../public/images/brand.png" alt="" class="brand">
+                <ul class="nav-list">
+                    <li><a href="#page-top">首页</a></li>
+                    <li><a href="#product">产品介绍</a></li>
+                    <li><a href="#cooperation">合作资源</a></li>
+                    <li><a href="#introduce">公司介绍</a></li>
+                    <li><a href="#contact-us">联系我们</a></li>
+                </ul>
+            </nav>
+            <img src="../public/images/a0d1050e52a74ed79e340a47c1b20432.jpg" alt="" class="img-responsive">
+            <img src="../public/images/title.png" alt="" class="title">
+        </div>
+
+        <!--解决方案-->
+        <div id="product" class="plan">
+            <div class="plan-content">
+                <h2>妙计提供全流程的个人定制和单团解决方案</h2>
+                <ul class="plan-list list-unstyled" id="plan-list">
+                    <li style="flex:0 0 190px">
+                        <div class="list-left" style="margin-right: 38px">
+                            <p class="current" style="padding:24px 18px">提供全面的路线库、景点库，帮助定制师打造独家路线。</p>
+                            <img src="../public/images/下载.png" width="102" alt="">
+                            <span class="current">私有资源知识库</span>
+                        </div>
+                        <div class="list-right"><img src="../public/images/arrows.png" alt="" class="arrow"></div>
+                    </li>
+                    <li style="flex:0 0 145px">
+                        <div class="list-left" style="margin-right: 16px">
+                            <p style="padding:15px 18px">人工智能辅助定制师在此平台完成行程规划，安排好所有的机酒、景点、餐饮。</p>
+                            <img src="../public/images/下载 (1).png" width="70" alt="">
+                            <span>行程规划系统</span>
+                        </div>
+                        <div class="list-right"><img src="../public/images/arrows.png" width="" alt="" class="arrow"></div>
+                    </li>
+                    <li style="flex:0 0 216px">
+                        <div class="list-left" style="margin-right: 24px">
+                            <p style="padding:24px 18px">智能分析各个供应商的价格，准确的核算出各项报价。</p>
+                            <img src="../public/images/d18572b3e67dd5e105ed3ea7ad6bf7a1.png" width="140" alt="">
+                            <span>自动核价系统</span>
+                        </div>
+                        <div class="list-right"><img src="../public/images/arrows.png" alt="" class="arrow"></div>
+                    </li>
+                    <li style="flex:0 0 155px">
+                        <div class="list-left" style="margin-right: 28px">
+                            <p style="padding:15px 18px">支持将行程方案导出成word/送签单/路书，也支持以链接方式发送给客户。</p>
+                            <img src="../public/images/下载 (2).png" width="76" alt="">
+                            <span>多版本方案输出</span>
+                        </div>
+                        <div class="list-right"><img src="../public/images/arrows.png" alt="" class="arrow"></div>
+                    </li>
+                    <li style="flex:0 0 177px">
+                        <div class="list-left" style="margin-right: 25px">
+                            <p style="padding:15px 18px">接入数家API及供应商，可直接在平台进行机票、酒店、包车等产品的预订。</p>
+                            <img src="../public/images/4681121ae9b16e60acf030ce028e2a1b.png" width="102" alt="">
+                            <span>购买及分销系统</span>
+                        </div>
+                        <div class="list-right"><img src="../public/images/arrows.png" alt="" class="arrow"></div>
+                    </li>
+                    <li style="flex:0 0 86px">
+                        <div class="list-left" style="margin-right: 38px">
+                            <p style="padding:15px 18px">移动端的沟通工具提供APP/网页/微信小程序，满足客户和定制师的各种沟通场景。</p>
+                            <img src="../public/images/下载 (3).png" width="86" alt="">
+                            <span>客户沟通工具</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--what can I do for you?-->
+        <div class="todo">
+            <h2>妙计能帮你做什么</h2>
+            <div class="todo-list">
+                <div class="todo-item">
+                    <img src="../public/images/a10b58cfa9cb162886cd3a407e477898.png" alt="">
+                    <div><span class="">10秒生成客户行程</span></div>
+                    <p>用人工智能来应对客户多变的定制需求，10秒钟规划出行程，大到飞机火车，小到景点公交，全部安排妥当。</p>
+                </div>
+                <div class="todo-item">
+                    <img src="../public/images/b57d7517f93551a4c00b2e79dbacf475.png" alt="">
+                    <div><span class="">连接海量资源 实现分钟级报价</span></div>
+                    <p>连接200+以上OTA和B2B网站，数据涵盖全球8000+城市的机票、火车、酒店、大巴、租车、包车等品类，每一个产品均可全网比价，快速找到最优价格。</p>
+                </div>
+                <div class="todo-item num3">
+                    <img src="../public/images/522de4c98862da57c73687047a6aa5e6.png" alt="">
+                    <div><span class="">灵活的私有资源库</span></div>
+                    <p>我们提供技术将您的企业数据接入妙计系统，包括个性化的POI、经典路线、地接活动等，不仅能保留您的独家资源，还可以参与路线规划和价格核算。</p>
+                </div>
+                <div class="todo-item">
+                    <img src="../public/images/6989e9a2daf3b9351eac0cd3e9934c9c.png" alt="">
+                    <div><span class="">导出多种格式的行程</span></div>
+                    <p>根据你的业务需求，你可以选择导出简洁的word报价单，或者实用的excel行程单，更可以一键导出丰富多彩的路书，并且我们将为你保存每一个导出的版本。</p>
+                </div>
+                <div class="todo-item">
+                    <img src="../public/images/4ed0e7851ab52cc585eed55eff67a7f5.png" alt="">
+                    <div><span class="">高效的客户沟通方式</span></div>
+                    <p>针对旅游定制专门打造的聊天系统，提供贴合行程的各类咨询卡片，降低定制师与客户的沟通障碍。</p>
+                    <p class="message">*  您可以根据自身情况选择APP、微信小程序或接入SDK，建立企业自己的沟通平台。</p>
+                </div>
+                <div class="todo-item num6">
+                    <img src="../public/images/cb04ea19f07b5a696eee61ae6fa108f5.png" alt="">
+                    <div><span class="">打造企业专属平台</span></div>
+                    <p>系统结构可完全根据企业需求深度定制，遵循您的业务流程和操作习惯，不只是更换一个logo这么简单。</p>
+                </div>
+            </div>
+        </div>
+
+        <!--接入资源-->
+        <div  id="cooperation" class="resource">
+            <h2>妙计接入的资源</h2>
+            <div><img src="../public/images/b34a66dcbd9087756f7aaf89eff366e3.png" alt=""></div>
+        </div>
+
+        <!--公司介绍-->
+        <div id="introduce" class="money">
+            <img  class="money-bg" src="../public/images/cfbc2ac24b649e37ded4aba4d7724c01.png" alt="">
+            <div class="wrapper">
+                <h1>Travel made simple with Mioji</h1>
+                <div>
+                    <p><img src="../public/images/moneytitle.png" alt="">&nbsp;&nbsp;&nbsp;妙计成立于2014年1月，目前已完成三轮融资，金额超过2600万美金，投资机构包括贝塔斯曼亚洲基金、DCM、晨兴等国际知名投资机构。公司核心团队来自百度、腾讯、搜狗等国内一线互联网公司和湖南卫视、可口可乐、德勤等知名企业。</p>
+                    <p>妙计拥有全球最大的旅行产品数据库，基于强大的人工智能技术，帮助旅行企业实现简单高效的行程定制。<br>Travel made simple.</p>
+                </div>
+            </div>
+        </div>
+
+        <!--媒体报道-->
+        <div class="media">
+            <div class="media-inner">
+                <h2>媒体报道</h2>
+                <div class="media-content">
+                    <div class="media-summary">
+                        <img src="../public/images/media-logo.png" class="quot-left" alt=""><img src="../public/images/media-logo.png" class="quot-right" alt="">
+                        <a href="http://rmrbimg2.people.cn/data/rmrbwap/2016/06/19/cms_1713174113158144.html" class="current" target="_blank">就像有人全程帮助你规划一样，哪个景点耗费多长时间、怎么乘车到达，挺详细的。不满意哪个景点还能临时调整删减，省心还省力。</a>
+                        <a href="http://companies.caixin.com/2014-12-14/100762885.html" target="_blank">让“旅行超体”浓缩在移动端的小巧界面中，更重要的是在瞬息之间呈现搜索结果。</a>
+                        <a href="https://mp.weixin.qq.com/s?__biz=MzIyNzEyNTYyNA==&amp;mid=2650006068&amp;idx=1&amp;sn=95ed0cdab79f48c76f752dc0bc72edea&amp;scene=1&amp;srcid=06063rdiW6j4rUuYqYWvwIYa&amp;key=f8ab7b995657050b291ef02673294551be4a75a41e2f2c29e4c4b9d6c4ea6b868b589cdc59429281d3d34d5e6ba8ddfc&amp;ascene=0&amp;uin=NDE3MDYwNjk1&amp;devicetype=iMac+MacBookAir7%2C2+OSX+OSX+10.10.5+build(14F1808)&amp;version=11020201&amp;pass_ticket=nrF1rp4Fu%2BDb5tn5ktTLh2cipUHIdEYh0IquE0Bpi0ISyRf7QDWVKen5qZhLptRS" target="_blank">妙计旅行采集了数据，让机器把所有苦活累活都干掉，是一个敢于挑战旅游命题的强大技术团队。</a>
+                        <a href="http://www.yicai.com/news/4625320.html" target="_blank">定制师可能水平不一，而机器的服务质量是恒定的；使用定制师是需要支付高额成本的，而使用机器是免费的。</a>
+                        <a href="http://www.pingwest.com/mioji-travel-app/" target="_blank">试试妙计旅行给你规划的线路。让你跳过繁琐的行程规划环节，直接享受阳光和沙滩。</a>
+                        <a href="http://www.geekpark.net/topics/215276" target="_blank">妙计旅行能帮你几秒钟搞定所有的繁杂搜索，制订最适合你的出行计划。</a>
+                        <a href="http://mobile.bbwc.cn/article/10064331/1/cat_11?utm_source=weixin&amp;articleToken=robjku&amp;from=singlemessage&amp;isappinstalled=0" target="_blank">越来越多的中国消费者热衷于选择自助旅行，创业公司妙计旅行利用数据和智能算法体系为自由行用户提供个性化行程规划服务。</a>
+                    </div>
+                    <div class="media-list">
+                        <div>
+                            <a target="_blank" style="flex: 0 0 149px;" href="http://rmrbimg2.people.cn/data/rmrbwap/2016/06/19/cms_1713174113158144.html">
+                                <img data-num="0" class="current" src="../public/images/下载 (4).png" alt="">
+                            </a>
+                            <a target="_blank" style="flex: 0 0 71px;" href="http://companies.caixin.com/2014-12-14/100762885.html">
+                                <img data-num="1" src="../public/images/下载 (5).png" alt="">
+                            </a>
+                            <a target="_blank" style="flex: 0 0 71px;" href="https://mp.weixin.qq.com/s?__biz=MzIyNzEyNTYyNA==&mid=2650006068&idx=1&sn=95ed0cdab79f48c76f752dc0bc72edea&scene=1&srcid=06063rdiW6j4rUuYqYWvwIYa&key=f8ab7b995657050b291ef02673294551be4a75a41e2f2c29e4c4b9d6c4ea6b868b589cdc59429281d3d34d5e6ba8ddfc&ascene=0&uin=NDE3MDYwNjk1&devicetype=iMac+MacBookAir7%2C2+OSX+OSX+10.10.5+build(14F1808)&version=11020201&pass_ticket=nrF1rp4Fu%2BDb5tn5ktTLh2cipUHIdEYh0IquE0Bpi0ISyRf7QDWVKen5qZhLptRS">
+                                <img data-num="2" src="../public/images/下载 (6).png" alt="">
+                            </a>
+                            <a target="_blank" style="flex: 0 0 170px;" href="https://www.yicai.com/news/4625320.html">
+                                <img data-num="3" src="../public/images/下载 (7).png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a target="_blank" style="flex: 0 0 168px;" href="https://www.pingwest.com/a/71664">
+                                <img data-num="4" src="../public/images/下载 (8).png" alt="">
+                            </a>
+                            <a target="_blank" style="flex: 0 0 229px;" href="http://www.geekpark.net/news/215276">
+                                <img data-num="5" src="../public/images/下载 (9).png" alt="">
+                            </a>
+                            <a target="_blank" style="flex: 0 0 146px;" href="http://mobile.bbwc.cn/article/10064331/1/cat_11?utm_source=weixin&articleToken=robjku&from=singlemessage&isappinstalled=0">
+                                <img data-num="6" src="../public/images/下载 (10).png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--荣获奖项-->
+        <div class="awards">
+            <div>
+                <h2>荣获奖项</h2>
+                <ul>
+                    <li>
+                        <img src="../public/images/6e5561e2eb283aab6bd1fba185e7deb5.png" alt="">
+                        <p>2016极客公园</p>
+                        <span>“最值得关注的50家创业公司”</span>
+                    </li>
+                    <li>
+                        <img src="../public/images/9d20cc144f8abf71952a647af9e9c28a.png" alt="">
+                        <p>2016环球旅讯</p>
+                        <span>“最佳人气产品”</span>
+                    </li>
+                    <li>
+                        <img src="../public/images/a1d39adedd25b457c05bc8a1c8196a52.png" alt="">
+                        <p>全球旅业创新峰会</p>
+                        <span>唯一入选中国企业（2016）</span>
+                    </li>
+                    <li>
+                        <img src="../public/images/2dbfa5782fdabb3ac6eb266f8b286900.png" alt="">
+                        <p>2015央广网</p>
+                        <span>“最具创新产品”</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--联系我们-->
+        <div id="contact-us" class="tel">
+            <div class="tel-wrapper">
+                <h2>产品服务</h2>
+                <div class="service">
+                    <p>服务热线：400-669-1761 <span>09:30 - 18:30（周一至周五，法定节假日除外）</span> </p>
+                    <p>服务邮箱：support@mioji.com</p>
+                </div>
+                <h2>联系我们</h2>
+                <div class="contact">
+                    <p>热线：1840145778309:30 - 18:30（周一至周五，法定节假日除外 <span class="address">地址：北京东城区国学胡同11号</span></p>
+                    <div class="email">邮箱：marketing@mioji.com
+                        <em>bd@mioji.com</em>
+                        <span class="subscribe">关注：
+                            <a href="https://weibo.com/mioji?is_all=1" target="_blank">
+                                <img src="../public/images/weibo.png" alt="">
+                            </a>
+                            <img class="weixinpic" src="../public/images/weixin.png" alt="">
+                        </span>
+                        <div class="qr-code">
+                            <img src="../public/images/817d3532250474f35927cd20e9434853.png" alt="">
+                            <p>妙计旅行官方微信号</p>
+                        </div>
+                    </div>
+                    <div id="contact-bottom">
+                        <i>媒体采访、市场合作</i><i>商务及旅游同业合作</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer-->
+        <footer>
+            <img class="to-top" src="../public/images/totop-grey.png" alt="">
+            <div class="footer-inner">
+                <div class="footer-top">
+                    <p>Copyright 2018 Mioji.com. All rights reserved. (patent pending)</p>
+                    <p><a href="https://www.lagou.com/gongsi/8861.html" style="text-decoration:none;color:#595959;">加入我们</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span id="to-top" style="cursor:pointer;color:#595959;">返回顶部</span></p>
+                </div>
+                <div class="footer-bottom">京汇行科技有限公司,版权所有 京公网安备 11010802020559号 京ICP备14007143号</div>
+            </div>
+        </footer>
+    </div>
+
+
+    <!--jQuery-->
+    <script src="../public/js/jquery-1.11.3.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="../public/js/index.js"></script>
+</body>
+</html>
